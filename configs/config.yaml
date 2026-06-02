@@ -1,0 +1,28 @@
+project_name: food-ingredient-vqa
+paths:
+  raw_data_dir: data/raw/FoodSeg103
+  processed_data_dir: data/processed
+  train_csv: data/processed/train.csv
+  val_csv: data/processed/val.csv
+  test_csv: data/processed/test.csv
+  checkpoint_dir: outputs/checkpoints
+  best_checkpoint: outputs/checkpoints/best_model.pth
+dataset:
+  source: huggingface
+  hf_dataset_name: tejasmishra77/FoodSeg103
+  image_size: 224
+  batch_size: 16
+  num_workers: 0
+  use_subset: false
+  train_subset_size: null
+  val_subset_size: null
+training:
+  epochs: 10
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+model:
+  backbone: efficientnet_b0
+  num_classes: 103
+inference:
+  threshold: 0.35
+  top_k: 5
